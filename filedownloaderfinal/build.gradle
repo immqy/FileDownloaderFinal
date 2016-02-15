@@ -21,7 +21,7 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'cn.finalteam:toolsfinal:1.1.4'
-    compile 'com.liulishuo.filedownloader:library:0.1.9'
+    compile 'com.liulishuo.filedownloader:library:0.2.0'
 }
 
 apply from: "../bintray.gradle"

@@ -72,7 +72,7 @@ public class DownloaderManager {
      * 初始化DownloadManager
      */
     public synchronized void init(DownloaderManagerConfiguration configuration) {
-        FileDownloader.init(configuration.getApplication());
+        FileDownloader.init(configuration.getApplication(), configuration.getOkHttpClientCustomMaker());
         FileDownloader.getImpl().bindService();
 
         ILogger.DEBUG = configuration.isDebug();

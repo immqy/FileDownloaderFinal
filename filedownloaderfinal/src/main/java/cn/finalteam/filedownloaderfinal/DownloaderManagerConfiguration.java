@@ -19,6 +19,8 @@ package cn.finalteam.filedownloaderfinal;
 import android.app.Application;
 import android.support.annotation.IntRange;
 
+import com.liulishuo.filedownloader.util.FileDownloadHelper;
+
 import java.util.Map;
 
 /**
@@ -35,6 +37,7 @@ public class DownloaderManagerConfiguration {
     private int mDbVersion;
     private boolean mDebug;
     private DbUpgradeListener mDbUpgradeListener;
+    private FileDownloadHelper.OkHttpClientCustomMaker mOkHttpClientCustomMaker;
 
     private DownloaderManagerConfiguration(final Builder builder) {
         this.mApplication = builder.mApplication;
@@ -57,6 +60,7 @@ public class DownloaderManagerConfiguration {
         private int mDbVersion = 1;
         private DbUpgradeListener mDbUpgradeListener;
         private boolean mDebug;
+        private FileDownloadHelper.OkHttpClientCustomMaker mOkHttpClientCustomMaker;
 
         public Builder(Application application) {
             this.mApplication = application;
@@ -124,6 +128,17 @@ public class DownloaderManagerConfiguration {
             return this;
         }
 
+
+        /**
+         * 设置OkHttp自定义实例
+         * @param okHttpClientCustomMaker
+         * @return
+         */
+        public Builder setOkHttpClientCustomMaker(FileDownloadHelper.OkHttpClientCustomMaker okHttpClientCustomMaker) {
+            this.mOkHttpClientCustomMaker = okHttpClientCustomMaker;
+            return this;
+        }
+
         public DownloaderManagerConfiguration build() {
             return new DownloaderManagerConfiguration(this);
         }
@@ -156,5 +171,9 @@ public class DownloaderManagerConfiguration {
 
     public boolean isDebug() {
         return mDebug;
+    }
+
+    public FileDownloadHelper.OkHttpClientCustomMaker getOkHttpClientCustomMaker() {
+        return mOkHttpClientCustomMaker;
     }
 }
